@@ -1,75 +1,78 @@
-# ReflectAI: ML-Powered Emotional Intelligence Journal 🧠
+# ReflectAI: ML-Powered Emotional Intelligence Journal 🧠✨
 
-ReflectAI is an AI-powered journaling and emotional analytics platform that uses Natural Language Processing and Machine Learning to analyze user journal entries, classify emotions, and track mental well-being patterns over time.
+ReflectAI is an AI-powered journaling and emotional analytics platform that uses Natural Language Processing (NLP) and Machine Learning to analyze journal entries, classify emotions, and identify emotional well-being patterns.
 
-The system combines traditional NLP-based sentiment analysis with supervised machine learning models to provide personalized emotional insights through an interactive full-stack application.
+The system combines traditional sentiment analysis techniques with supervised machine learning models to provide personalized emotional insights through a full-stack web application.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
 - 📝 Secure personal journaling system
 - 🤖 Machine Learning based emotion classification
+- 🧠 NLP-powered sentiment analysis
 - 📊 Emotional wellness analytics dashboard
-- 📈 Long-term mood and sentiment tracking
-- 🧠 Cognitive pattern analysis
-- ⚡ Real-time journal analysis using REST APIs
-- 🔐 User authentication and data management
+- 📈 Long-term mood pattern tracking
+- ⚡ Real-time emotion prediction through REST APIs
+- 🔐 User authentication and journal management
+- 📉 Cognitive and emotional trend analysis
 
 ---
 
 # 🏗️ System Architecture
 
-
-User Journal Entry
-        |
-        ↓
-React Frontend
-        |
-        ↓
-Flask REST API
-        |
-        ↓
-Text Preprocessing Layer
-        |
-        ├─────────────────────────┐
-        |                         |
-        ↓                         ↓
-VADER Sentiment Engine     ML Emotion Classifier
-        |                         |
-Sentiment Polarity       TF-IDF Feature Extraction
-                                  |
-                                  ↓
-                    Random Forest Emotion Model
-                                  |
-                                  ↓
-                      Emotion Prediction
-                                  |
-        └─────────────────────────┘
-                    |
-                    ↓
-            ReflectAI Analytics Engine
-                    |
-        ┌───────────┼───────────┐
-        ↓           ↓           ↓
-       ERI         EVI         EDS
-
-                    |
-                    ↓
-              User Dashboard
-
+```text
+                           ┌─────────────────────┐
+                           │    React Frontend    │
+                           │  Journal Dashboard   │
+                           └──────────┬──────────┘
+                                      │
+                                      ▼
+                           ┌─────────────────────┐
+                           │    Flask REST API    │
+                           │ Backend Processing   │
+                           └──────────┬──────────┘
+                                      │
+                  ┌───────────────────┴───────────────────┐
+                  │                                       │
+                  ▼                                       ▼
+        ┌───────────────────┐              ┌──────────────────────┐
+        │ VADER Sentiment   │              │ ML Emotion Classifier │
+        │ Analysis Engine   │              │ TF-IDF + RandomForest │
+        └─────────┬─────────┘              └───────────┬──────────┘
+                  │                                    │
+                  │                                    ▼
+                  │                         ┌──────────────────────┐
+                  │                         │ Emotion Prediction   │
+                  │                         │ Confidence Scores    │
+                  │                         └───────────┬──────────┘
+                  │                                    │
+                  └───────────────────┬────────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │ ReflectAI Analytics      │
+                         │ ERI | EVI | EDS Scores   │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │ User Emotional Insights  │
+                         │ Dashboard Visualization  │
+                         └──────────────────────────┘
+```
 
 ---
 
 # 🧠 Machine Learning Pipeline
 
-ReflectAI implements a supervised NLP classification pipeline to predict emotional states from journal text.
+ReflectAI implements a supervised NLP classification pipeline for detecting emotions from textual journal data.
 
-## Dataset
+## Dataset Used
 
-**Dataset Used:** HuggingFace `dair-ai/emotion`
+**HuggingFace `dair-ai/emotion` Dataset**
 
-The dataset consists of labeled text samples categorized into six emotional classes:
+A labeled emotion classification dataset containing text samples mapped to six emotional categories:
 
 - Joy
 - Sadness
@@ -78,68 +81,95 @@ The dataset consists of labeled text samples categorized into six emotional clas
 - Love
 - Surprise
 
-
-Dataset Details:
+Dataset details:
 
 | Property | Value |
 |---|---|
-| Dataset Type | Text Classification |
-| Total Samples | 20,000 |
+| Task Type | Multi-Class Text Classification |
+| Dataset Size | 20,000 text samples |
 | Training Samples | 16,000 |
 | Number of Classes | 6 |
-| Feature Extraction | TF-IDF |
+| Feature Extraction | TF-IDF Vectorization |
 | Vocabulary Size | 10,000 Features |
 
 ---
 
 # ⚙️ ML Workflow
 
-
+```text
 Raw Journal Text
         |
-        ↓
-Text Cleaning
+        ▼
+Text Cleaning & Preprocessing
         |
-        ↓
-Tokenization & Preprocessing
+        ▼
+TF-IDF Feature Extraction
         |
-        ↓
-TF-IDF Vectorization
-        |
-        ↓
-Model Training
-        |
-        ↓
-Model Evaluation
-        |
-        ↓
-Best Model Selection
-        |
-        ↓
-Emotion Prediction
+        ▼
+Model Training Pipeline
 
+        ├── Logistic Regression
+        |
+        ├── Random Forest Classifier
+        |
+        └── XGBoost Classifier
+
+        |
+        ▼
+
+Model Evaluation
+
+Accuracy
+Precision
+Recall
+Weighted F1 Score
+Confusion Matrix
+
+        |
+        ▼
+
+Best Model Selection
+
+        |
+        ▼
+
+Model Serialization
+
+emotion_model.pkl
+vectorizer.pkl
+
+        |
+        ▼
+
+Flask ML Prediction API
+
+        |
+        ▼
+
+Real-Time Emotion Analysis
+```
 
 ---
 
-# 🤖 Models Implemented
+# 🤖 Machine Learning Models
 
-Multiple machine learning models were trained and evaluated:
+Multiple supervised learning models were implemented and compared.
 
 ## Logistic Regression
 
-A baseline linear classification model for text-based emotion prediction.
+A baseline linear classifier used for efficient text classification.
 
 ## Random Forest Classifier
 
-An ensemble learning model using multiple decision trees for robust emotion classification.
+An ensemble learning approach using multiple decision trees to improve classification robustness.
 
 ## XGBoost Classifier
 
-A gradient boosting model optimized for high-performance classification tasks.
+A gradient boosting algorithm optimized for high-performance classification.
 
 ---
 
-# 📊 Model Performance
+# 📊 Model Evaluation Results
 
 | Model | Validation Accuracy | Weighted F1 Score |
 |---|---|---|
@@ -147,7 +177,7 @@ A gradient boosting model optimized for high-performance classification tasks.
 | Random Forest | 89.65% | 0.8965 |
 | XGBoost | 89.20% | 0.8922 |
 
-## Best Performing Model
+## Selected Model
 
 **Random Forest Classifier**
 
@@ -158,25 +188,25 @@ Final Test Performance:
 | Accuracy | 88.10% |
 | Weighted F1 Score | 0.8811 |
 
-The trained model is serialized and integrated with the backend for real-time inference.
+The final trained model is integrated with Flask APIs for real-time emotion prediction.
 
 ---
 
-# 📈 ReflectAI Emotional Analytics
+# 📈 ReflectAI Emotional Intelligence Engine
 
-Along with ML-based classification, ReflectAI calculates advanced emotional indicators.
+Apart from ML classification, ReflectAI includes custom emotional analytics.
 
 ## Emotional Risk Index (ERI)
 
-Measures emotional risk patterns based on journal sentiment and emotional history.
+Analyzes emotional risk patterns based on sentiment behavior and journal history.
 
 ## Emotional Volatility Index (EVI)
 
-Tracks emotional fluctuations across multiple journal entries.
+Measures fluctuations in emotional states over time.
 
 ## Emotional Drift Score (EDS)
 
-Detects gradual shifts in emotional patterns over time.
+Tracks gradual emotional changes across multiple journal entries.
 
 ---
 
@@ -192,7 +222,7 @@ Detects gradual shifts in emotional patterns over time.
 
 - Python
 - Flask
-- REST APIs
+- REST API
 - SQLite
 
 ## Machine Learning & NLP
@@ -208,43 +238,16 @@ Detects gradual shifts in emotional patterns over time.
 - Pandas
 - NumPy
 
-## Development Tools
+## Tools
 
 - Git
 - GitHub
 
 ---
 
-# 📁 Project Structure
-
-
-ReflectAI-ML-Journal
-
-├── backend
-│
-│   ├── ml
-│   │   ├── train_model.py
-│   │   ├── evaluate.py
-│   │   ├── predict.py
-│   │   │
-│   │   └── models
-│   │       ├── emotion_model.pkl
-│   │       ├── vectorizer.pkl
-│   │       └── metrics.json
-│   │
-│   ├── app.py
-│   └── requirements.txt
-│
-├── frontend
-│
-└── README.md
-
-
----
-
 # ⚡ Installation & Setup
 
-## Clone Repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/kjohar45/ReflectAI-ML-Journal.git
@@ -256,6 +259,8 @@ cd ReflectAI-ML-Journal
 
 ## Backend Setup
 
+Navigate to backend:
+
 ```bash
 cd backend
 ```
@@ -266,7 +271,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Start Flask server:
+Run Flask server:
 
 ```bash
 python app.py
@@ -274,36 +279,38 @@ python app.py
 
 ---
 
-## Machine Learning Training
+## Train Machine Learning Model
 
-Navigate to ML directory:
+Navigate:
 
 ```bash
 cd backend/ml
 ```
 
-Train models:
+Run training pipeline:
 
 ```bash
 python train_model.py
 ```
 
-This performs:
+The script performs:
 
 - Dataset loading
 - Text preprocessing
+- Feature extraction
 - Model training
 - Model comparison
-- Evaluation
+- Performance evaluation
 - Model serialization
 
 Generated artifacts:
 
-```
+```text
 models/
- ├── emotion_model.pkl
- ├── vectorizer.pkl
- └── metrics.json
+
+emotion_model.pkl
+vectorizer.pkl
+metrics.json
 ```
 
 ---
@@ -316,13 +323,13 @@ Navigate:
 cd frontend
 ```
 
-Install packages:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Start React application:
+Run React application:
 
 ```bash
 npm start
@@ -330,26 +337,27 @@ npm start
 
 ---
 
-# 🔮 Future Enhancements
+# 🔮 Future Improvements
 
 - Transformer-based emotion classification using BERT
-- Personalized recommendation system
-- Advanced mental health trend forecasting
+- Personalized mental wellness recommendation system
+- Emotion forecasting using sequential models
 - Cloud deployment
 - Mobile application support
 
 ---
 
-# 📌 Project Highlights
+# 🌟 Project Highlights
 
-✔ End-to-end ML pipeline implementation  
-✔ Multiple model comparison and evaluation  
-✔ Real-time ML inference through Flask APIs  
-✔ Full-stack React + Python integration  
-✔ NLP-based emotion understanding system  
+✔ End-to-end Machine Learning pipeline  
+✔ Multiple ML model comparison  
+✔ NLP-based emotion classification  
+✔ Real-time ML inference using Flask APIs  
+✔ Full-stack React + Python application  
+✔ Custom emotional analytics system  
 
 ---
 
 # 👩‍💻 Author
 
-Developed by Karuna Johar
+Developed by **Karuna Johar**
