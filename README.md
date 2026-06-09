@@ -1,61 +1,355 @@
-# 🧠 AI Journal Companion
+# ReflectAI: ML-Powered Emotional Intelligence Journal 🧠
 
-[![SDG 3](https://img.shields.io/badge/SDG-3--Good--Health--&--Well--Being-green)](https://sdgs.un.org/goals/goal3)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+ReflectAI is an AI-powered journaling and emotional analytics platform that uses Natural Language Processing and Machine Learning to analyze user journal entries, classify emotions, and track mental well-being patterns over time.
 
-**AI Journal Companion** is a full-stack AI-powered web application designed to help users reflect on their daily thoughts, analyze emotional well-being, and receive personalized motivational feedback using modern AI techniques.
-
-This project implements the **ReflectAI** mathematical framework, enabling real-time personalized sentiment calibration, emotional drift tracking, and cognitive distortion detection, replacing generic, population-level emotion thresholds with individual-specific metrics.
+The system combines traditional NLP-based sentiment analysis with supervised machine learning models to provide personalized emotional insights through an interactive full-stack application.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Features
 
-* ✍️ **Daily Journaling**: Simple, distraction-free interface for free-form daily entries.
-* 🧠 **ReflectAI Adaptive Sentiment Personalization (ASP)**: Overrides static sentiment models by locally learning your personal positive (`T_pos`) and negative (`T_neg`) baseline thresholds to accurately classify your emotions.
-* 📊 **Emotional Risk & Drift Indices**: Calculates your real-time **Emotional Risk Index (ERI)**, **Emotional Volatility Index (EVI)**, and **Emotional Drift Score (EDS)** natively on the dashboard.
-* 🛑 **Cognitive Pattern Detection (CPD)**: Scans journal entries to detect and highlight cognitive distortions (e.g., absolutist thinking or catastrophizing) based on CBT lexicons.
-* 💬 **AI-Generated Motivation**: Uses **Groq SDK** and ReflectAI logic to generate empathetic, personalized messages that intercept risky behaviors or fall back to LLM encouragement.
-* 🚨 **Consented SMS Crisis System**: Employs an LLM to secretly categorize entries into `SUICIDAL_IDEATION`, `SELF_HARM`, or `HARM_OTHERS`. It securely prompts users dynamically on the frontend before routing mocked text messages to their emergency cellular contacts (`sms_service.py`) or recommending the 988 lifeline.
-* 📈 **Offline Research Generators**: Includes a `generate_paper_graphs.py` Pandas/Matplotlib script to mathematically output 30-day simulated datasets and dump print-friendly CSVs/PNGs replicating the ReflectAI research distributions.
-* ✨ **Premium UI**: Fully responsive light-mode dashboard featuring fluid typography, CSS Grid, and custom charting.
-* 💾 **Persistent Storage**: Robust **SQLite** database integration with automatic timestamping and secure JWT-based user authentication.
+- 📝 Secure personal journaling system
+- 🤖 Machine Learning based emotion classification
+- 📊 Emotional wellness analytics dashboard
+- 📈 Long-term mood and sentiment tracking
+- 🧠 Cognitive pattern analysis
+- ⚡ Real-time journal analysis using REST APIs
+- 🔐 User authentication and data management
 
 ---
 
-## 🏗️ System Architecture
+# 🏗️ System Architecture
 
-The hybrid AI architecture ensures fast, explainable emotion detection coupled with deep contextual reasoning.
 
-1. **React Frontend**: Captures user input and dynamically renders the ReflectMetrics, Calendar, and MoodChart.
-2. **Flask REST API**: Orchestrates the data flow, authenticates users via JWT, and executes the math formulas.
-3. **ReflectAI Engine**: Applies ASP, EVI, EDS, and CPD math logic directly to the user's isolated history (`reflect.py`).
-4. **Groq (LLM) / VADER NLP**: Base text ingestion engines to extract syntax and provide fallback motivation.
-5. **SQLite**: Handles data persistence securely.
+User Journal Entry
+        |
+        ↓
+React Frontend
+        |
+        ↓
+Flask REST API
+        |
+        ↓
+Text Preprocessing Layer
+        |
+        ├─────────────────────────┐
+        |                         |
+        ↓                         ↓
+VADER Sentiment Engine     ML Emotion Classifier
+        |                         |
+Sentiment Polarity       TF-IDF Feature Extraction
+                                  |
+                                  ↓
+                    Random Forest Emotion Model
+                                  |
+                                  ↓
+                      Emotion Prediction
+                                  |
+        └─────────────────────────┘
+                    |
+                    ↓
+            ReflectAI Analytics Engine
+                    |
+        ┌───────────┼───────────┐
+        ↓           ↓           ↓
+       ERI         EVI         EDS
+
+                    |
+                    ↓
+              User Dashboard
+
 
 ---
 
-## 🧑‍💻 Tech Stack
+# 🧠 Machine Learning Pipeline
 
-| Component | Technologies |
-| :--- | :--- |
-| **Frontend** | React.js, Axios, Chart.js, Vanilla CSS |
-| **Backend** | Python, Flask, Flask-CORS, Flask-JWT-Extended |
-| **AI / NLP** | VADER Sentiment, CBT Lexicons, Groq SDK |
-| **Database** | SQLite |
+ReflectAI implements a supervised NLP classification pipeline to predict emotional states from journal text.
+
+## Dataset
+
+**Dataset Used:** HuggingFace `dair-ai/emotion`
+
+The dataset consists of labeled text samples categorized into six emotional classes:
+
+- Joy
+- Sadness
+- Anger
+- Fear
+- Love
+- Surprise
+
+
+Dataset Details:
+
+| Property | Value |
+|---|---|
+| Dataset Type | Text Classification |
+| Total Samples | 20,000 |
+| Training Samples | 16,000 |
+| Number of Classes | 6 |
+| Feature Extraction | TF-IDF |
+| Vocabulary Size | 10,000 Features |
 
 ---
 
-## 📂 Setup & Testing
+# ⚙️ ML Workflow
 
-1. **Install Dependencies**:
-   - Backend: `cd backend && source venv/bin/activate && pip install -r requirements.txt`
-   - Frontend: `cd frontend && npm install`
-2. **Setup Groq API**:
-   - Ensure a `.env` file exists in `/backend` with `GROQ_API_KEY=your_key_here`. 
-3. **Seed Test Data**:
-   - To immediately visualize the ReflectAI dashboard charts, run `python backend/seed.py`.
-   - Log in using Username: `demo`, Password: `password`.
-4. **Run Servers**:
-   - Backend: `python backend/app.py` (Runs on `localhost:5000`)
-   - Frontend: `npm start` (Runs on `localhost:3000`)
+
+Raw Journal Text
+        |
+        ↓
+Text Cleaning
+        |
+        ↓
+Tokenization & Preprocessing
+        |
+        ↓
+TF-IDF Vectorization
+        |
+        ↓
+Model Training
+        |
+        ↓
+Model Evaluation
+        |
+        ↓
+Best Model Selection
+        |
+        ↓
+Emotion Prediction
+
+
+---
+
+# 🤖 Models Implemented
+
+Multiple machine learning models were trained and evaluated:
+
+## Logistic Regression
+
+A baseline linear classification model for text-based emotion prediction.
+
+## Random Forest Classifier
+
+An ensemble learning model using multiple decision trees for robust emotion classification.
+
+## XGBoost Classifier
+
+A gradient boosting model optimized for high-performance classification tasks.
+
+---
+
+# 📊 Model Performance
+
+| Model | Validation Accuracy | Weighted F1 Score |
+|---|---|---|
+| Logistic Regression | 88.85% | 0.8852 |
+| Random Forest | 89.65% | 0.8965 |
+| XGBoost | 89.20% | 0.8922 |
+
+## Best Performing Model
+
+**Random Forest Classifier**
+
+Final Test Performance:
+
+| Metric | Score |
+|---|---|
+| Accuracy | 88.10% |
+| Weighted F1 Score | 0.8811 |
+
+The trained model is serialized and integrated with the backend for real-time inference.
+
+---
+
+# 📈 ReflectAI Emotional Analytics
+
+Along with ML-based classification, ReflectAI calculates advanced emotional indicators.
+
+## Emotional Risk Index (ERI)
+
+Measures emotional risk patterns based on journal sentiment and emotional history.
+
+## Emotional Volatility Index (EVI)
+
+Tracks emotional fluctuations across multiple journal entries.
+
+## Emotional Drift Score (EDS)
+
+Detects gradual shifts in emotional patterns over time.
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React.js
+- JavaScript
+- HTML/CSS
+
+## Backend
+
+- Python
+- Flask
+- REST APIs
+- SQLite
+
+## Machine Learning & NLP
+
+- Scikit-learn
+- XGBoost
+- NLTK
+- VADER Sentiment Analyzer
+- TF-IDF Vectorization
+
+## Data Processing
+
+- Pandas
+- NumPy
+
+## Development Tools
+
+- Git
+- GitHub
+
+---
+
+# 📁 Project Structure
+
+
+ReflectAI-ML-Journal
+
+├── backend
+│
+│   ├── ml
+│   │   ├── train_model.py
+│   │   ├── evaluate.py
+│   │   ├── predict.py
+│   │   │
+│   │   └── models
+│   │       ├── emotion_model.pkl
+│   │       ├── vectorizer.pkl
+│   │       └── metrics.json
+│   │
+│   ├── app.py
+│   └── requirements.txt
+│
+├── frontend
+│
+└── README.md
+
+
+---
+
+# ⚡ Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/kjohar45/ReflectAI-ML-Journal.git
+
+cd ReflectAI-ML-Journal
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start Flask server:
+
+```bash
+python app.py
+```
+
+---
+
+## Machine Learning Training
+
+Navigate to ML directory:
+
+```bash
+cd backend/ml
+```
+
+Train models:
+
+```bash
+python train_model.py
+```
+
+This performs:
+
+- Dataset loading
+- Text preprocessing
+- Model training
+- Model comparison
+- Evaluation
+- Model serialization
+
+Generated artifacts:
+
+```
+models/
+ ├── emotion_model.pkl
+ ├── vectorizer.pkl
+ └── metrics.json
+```
+
+---
+
+## Frontend Setup
+
+Navigate:
+
+```bash
+cd frontend
+```
+
+Install packages:
+
+```bash
+npm install
+```
+
+Start React application:
+
+```bash
+npm start
+```
+
+---
+
+# 🔮 Future Enhancements
+
+- Transformer-based emotion classification using BERT
+- Personalized recommendation system
+- Advanced mental health trend forecasting
+- Cloud deployment
+- Mobile application support
+
+---
+
+# 📌 Project Highlights
+
+✔ End-to-end ML pipeline implementation  
+✔ Multiple model comparison and evaluation  
+✔ Real-time ML inference through Flask APIs  
+✔ Full-stack React + Python integration  
+✔ NLP-based emotion understanding system  
+
+---
+
+# 👩‍💻 Author
+
+Developed by Karuna Johar
