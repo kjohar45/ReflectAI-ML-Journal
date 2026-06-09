@@ -1,0 +1,290 @@
+/* Modern, Clean & Professional Dashboard CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f3f4f6; /* Clean soft light gray */
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Center container */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+/* Grid layout for cards - only when not auth page */
+.app-container:not(.card) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.app-container:not(.card) > h1 {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+}
+
+/* Auth page layout - when h1 is first child followed by card */
+.app-container > h1:first-child {
+    text-align: center;
+    margin-bottom: 32px;
+    color: #111827;
+    grid-column: 1 / -1;
+}
+
+.app-container > h1:first-child + .card {
+    max-width: 450px;
+    margin: 0 auto;
+    width: 100%;
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+/* Headings */
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Card layout */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.2s ease-in-out;
+    min-height: auto;
+}
+
+.card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* First card spans full width */
+.app-container > .card:first-of-type {
+    grid-column: 1 / -1;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input:not([type]),
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    background: #f9fafb;
+    color: #111827;
+    display: block;
+    box-sizing: border-box;
+}
+
+form input {
+    margin-bottom: 16px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+input::placeholder, textarea::placeholder {
+    color: #9ca3af;
+}
+
+input[type="date"] {
+    cursor: pointer;
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Buttons */
+button {
+    margin-top: 8px;
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+}
+
+button:hover:not(:disabled) {
+    background: #4f46e5;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Override partial width buttons */
+button[style*="float"],
+.app-container > button {
+    width: auto;
+}
+
+/* Logout button */
+.app-container > button:first-child {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    margin: 0 0 20px 0;
+    float: right;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.app-container > button:first-child:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.app-container:not(.card) > h1 {
+    clear: both;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Paragraphs & Analysis Text */
+p {
+    margin: 8px 0;
+    line-height: 1.6;
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+p strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+/* Motivation box */
+.motivation-box {
+    background: #eff6ff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-style: italic;
+    margin-top: 16px;
+    line-height: 1.7;
+    color: #1e3a8a;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Error/Success Messages */
+p[style*="color: red"], p[style*="color:rgb(255"] {
+    color: #b91c1c !important;
+    background: #fef2f2;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #ef4444;
+    font-size: 0.9rem;
+}
+
+/* Calendar entries styling */
+div[style*="marginLeft"] p,
+div[style*="marginTop"] p {
+    margin-left: 0;
+    padding-left: 16px;
+    border-left: 2px solid #e5e7eb;
+    margin-bottom: 12px;
+}
+
+.app-container.card p button {
+    background: transparent;
+    color: #6366f1;
+    border: none;
+    padding: 0;
+    margin-left: 8px;
+    display: inline;
+    width: auto;
+    font-weight: 600;
+}
+
+.app-container.card p button:hover {
+    color: #4f46e5;
+    background: transparent;
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+    .app-container > .card:first-of-type {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 20px 16px;
+    }
+    h1 { font-size: 1.8rem; }
+}
