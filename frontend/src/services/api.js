@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://127.0.0.1:5000"
+    baseURL: "https://reflectai-backend-jok7.onrender.com"
 });
+
 
 // Track when login happens to prevent immediate token clearing
 let lastLoginTime = 0;
