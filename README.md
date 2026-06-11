@@ -243,7 +243,15 @@ Tracks gradual emotional changes across multiple journal entries.
 - Git
 - GitHub
 
+## Deployment
+
+- Vercel (Frontend Hosting)
+- Render (Backend Deployment)
+
 ---
+## 🌐 Live Demo
+
+🔗 https://reflect-ai-ml-journal.vercel.app/
 
 # ⚡ Installation & Setup
 
