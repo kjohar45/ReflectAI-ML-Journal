@@ -57,7 +57,7 @@ function App() {
     if (!isAuthenticated) {
         return (
             <div className="app-container">
-                <h1>🧠 AI Journal Companion</h1>
+                <h1>🧠 ReflectAI</h1>
                 <div className="card">
                     {showSignup ? (
                         <Signup 
