@@ -22,10 +22,16 @@ app.config["JWT_SECRET_KEY"] = "change-this-secret-key"
 
 CORS(
     app,
-    resources={r"/*": {"origins": "http://localhost:3000"}},
-    allow_headers=["Content-Type", "Authorization"]
+    resources={
+        r"/*": {
+            "origins": [
+                "http://localhost:3000",
+                "https://reflect-ai-ml-journal.vercel.app"
+            ]
+        }
+    },
+    supports_credentials=True
 )
-
 jwt = JWTManager(app)
 
 @jwt.unauthorized_loader
